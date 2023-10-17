@@ -1,16 +1,66 @@
-/* calendar.css */
+/* Add this CSS for a responsive layout */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+}
+
+/* CSS with a maximum width of 1200px */
 .calendar-container {
+  max-width: 1200px; /* Set the maximum width to 1200px */
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.calendar-navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background: #009688;
+  color: white;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+button {
+  background: #007a66;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #00574e;
+}
+
+#current-year {
+  font-size: 24px;
+}
+
+.calendar-content {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* Display 4 months in a row */
-  grid-gap: 20px; /* Add spacing between calendars */
+  grid-template-columns: repeat(3, 1fr); /* Display 3 months in a row for responsiveness */
+  grid-gap: 20px;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow: hidden;
+  justify-items: center;
 }
 
 .calendar {
-  width: fit-content; /* Set width to fit content */
+  width: fit-content;
   border: 1px solid #ccc;
   border-radius: 5px;
   text-align: center;
-  display: inline-block; /* Make the container inline-block to allow dynamic width */
+  display: inline-block;
 }
 
 .header {
@@ -35,6 +85,14 @@
 
 .days div {
   padding: 5px;
+}
+
+.days div.sunday {
+  color: red;
+}
+
+.days div:not(.sunday) {
+  color: black;
 }
 
 .days div:nth-child(7n), .days div:nth-child(7n-1) {

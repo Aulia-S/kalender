@@ -7,8 +7,12 @@ const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
 const calendarContainer = document.getElementById('calendar-container');
 const currentDate = new Date();
+let currentYear = 2023; // Set the default year
 
 function generateCalendar(year) {
+  // Clear the previous calendars
+  calendarContainer.innerHTML = '';
+
   for (let month = 0; month < 12; month++) {
     const firstDay = new Date(year, month, 1);
     const startingDay = firstDay.getDay();
@@ -42,13 +46,43 @@ function generateCalendar(year) {
       daysGrid.appendChild(emptyCell);
     }
 
-    // Add days in the month
+    // Add days in the month, marking Sundays with a class
     for (let day = 1; day <= daysInMonth; day++) {
       const cell = document.createElement('div');
       cell.textContent = day;
+      
+      if (day === 1 && startingDay === 0) {
+        // Ensure Sunday of the first week is marked as Sunday
+        cell.classList.add('sunday');
+      } else if ((day + startingDay - 1) % 7 === 0) {
+        // Mark subsequent Sundays
+        cell.classList.add('sunday');
+      }
+      
       daysGrid.appendChild(cell);
     }
   }
 }
 
-generateCalendar(currentDate.getFullYear());
+// Function to update the displayed year
+function updateYear() {
+  const currentYearElement = document.getElementById('current-year');
+  currentYearElement.textContent = currentYear;
+}
+
+// Event listener for the previous year button
+document.getElementById('prev-year').addEventListener('click', () => {
+  currentYear--;
+  updateYear();
+  generateCalendar(currentYear);
+});
+
+// Event listener for the next year button
+document.getElementById('next-year').addEventListener('click', () => {
+  currentYear++;
+  updateYear();
+  generateCalendar(currentYear);
+});
+
+// Initial calendar generation
+generateCalendar(currentYear);

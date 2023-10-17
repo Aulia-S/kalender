@@ -4,7 +4,14 @@
   <link rel="stylesheet" type="text/css" href="calendar.css">
 </head>
 <body>
-  <div class="calendar-container" id="calendar-container"></div>
+  <div class="calendar-container">
+    <div class="calendar-navigation">
+      <button id="prev-year">&lt;</button>
+      <span id="current-year">2023</span>
+      <button id="next-year">&gt;</button>
+    </div>
+    <div class="calendar-content" id="calendar-container"></div>
+  </div>
   <script src="calendar.js"></script>
 </body>
 </html>
