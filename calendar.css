@@ -1,0 +1,54 @@
+/* calendar.css */
+.calendar-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Display 4 months in a row */
+  grid-gap: 20px; /* Add spacing between calendars */
+}
+
+.calendar {
+  width: fit-content; /* Set width to fit content */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: center;
+  display: inline-block; /* Make the container inline-block to allow dynamic width */
+}
+
+.header {
+  background: #009688;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.header .month-year {
+  font-size: 20px;
+}
+
+.days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  padding: 5px;
+}
+
+.days div {
+  padding: 5px;
+}
+
+.days div:nth-child(7n), .days div:nth-child(7n-1) {
+  color: #009688;
+}
+
+.days div.today {
+  background: #009688;
+  color: #fff;
+  border-radius: 50%;
+}
+
+.days div:not(.today):hover {
+  background: #009688;
+  color: #fff;
+  cursor: pointer;
+}
